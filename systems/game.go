@@ -5,6 +5,7 @@ import (
 
 	"engo.io/ecs"
 	"engo.io/engo"
+	"github.com/qutrace/qanGo/ai"
 	"github.com/qutrace/qanGo/game"
 )
 
@@ -61,7 +62,11 @@ func (gs *GameSystem) Update(dt float32) {
 			fmt.Println(err)
 		case gs.cur = <-gs.board:
 			print(gs.cur)
-			gs.scan = true
+			if !gs.cur.GetPlayer() {
+				gs.moves <- ai.GetMove(gs.cur)
+			} else {
+				gs.scan = true
+			}
 		case gs.cur = <-gs.done:
 			print(gs.cur)
 			fmt.Println(gs.cur.GetState())
