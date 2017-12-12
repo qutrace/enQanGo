@@ -7,7 +7,7 @@ import (
 	"engo.io/ecs"
 	"engo.io/engo"
 	"engo.io/engo/common"
-	"github.com/qutrace/enqanGo/systems"
+	"github.com/qutrace/enQanGo/systems"
 )
 
 type myScene struct{}
