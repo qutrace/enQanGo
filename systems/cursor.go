@@ -4,7 +4,6 @@ import (
 	"engo.io/ecs"
 	"engo.io/engo"
 	"engo.io/engo/common"
-
 )
 
 type CursorSystem struct {
@@ -32,13 +31,13 @@ func (c *CursorSystem) DispatchMessage() {
 	}
 	engo.Mailbox.Dispatch(m)
 	//fmt.Println(m)
-	x:= engo.CanvasWidth()
-	y:= engo.CanvasHeight()
+	x := engo.CanvasWidth()
+	y := engo.CanvasHeight()
 	mx := c.mouseTracker.MouseX
 	my := c.mouseTracker.MouseY
 	move := MoveMessage{
-		X: int(int(mx + x/2 - 200) / int(x/6)),
-		Y: int(int(my + y/2 - 200) / int(y/6)),
+		X: int(int(mx+x/2-200) / int(x/6)),
+		Y: int(int(my+y/2-200) / int(y/6)),
 	}
 	//fmt.Println(move)
 	engo.Mailbox.Dispatch(move)

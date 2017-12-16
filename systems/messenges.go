@@ -10,6 +10,17 @@ func (p PrintBoardMessage) Type() string {
 	return "PrintBoardMessage"
 }
 
+type SetStateMessage struct {
+	game.Board
+}
+func (s SetStateMessage) Type() string {
+	return "SetStateMessage"
+}
+func (s SetStateMessage) GetBoard() game.Board {
+	return s.Board
+}
+
+
 type MoveMessage game.Move
 
 func (m MoveMessage) Type() string {

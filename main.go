@@ -23,7 +23,7 @@ func (*myScene) Preload() {
 }
 
 func (*myScene) Setup(world *ecs.World) {
-	engo.Input.RegisterButton("Restart", engo.Space)
+	engo.Input.RegisterButton("Restart", engo.A)
 	common.SetBackground(color.White)
 	world.AddSystem(&common.RenderSystem{})
 	world.AddSystem(&common.MouseSystem{})

@@ -24,7 +24,7 @@ func (ds *DrawingSystem) New(w *ecs.World) {
 	engo.Mailbox.Listen("PrintBoardMessage", print)
 }
 func (ds *DrawingSystem) Update(dt float32) {
-	for _,s := range ds.entities {
+	for _, s := range ds.entities {
 		s.Update()
 	}
 }
@@ -43,15 +43,14 @@ func (ds *DrawingSystem) Remove(basic ecs.BasicEntity) {
 
 func (ds *DrawingSystem) AddStone(s Stone) {
 	ds.entities = append(ds.entities, &s)
-	for _,system := range ds.world.Systems() {
+	for _, system := range ds.world.Systems() {
 		switch sys := system.(type) {
 		case *common.RenderSystem:
-				sys.Add(&s.BasicEntity, &s.RenderComponent, &s.SpaceComponent)
+			sys.Add(&s.BasicEntity, &s.RenderComponent, &s.SpaceComponent)
 		}
 	}
 	s.Update()
 }
-
 
 func (ds *DrawingSystem) DisplayBoard(b game.Board) {
 	es := ds.entities
@@ -62,7 +61,9 @@ func (ds *DrawingSystem) DisplayBoard(b game.Board) {
 
 	for y, row := range b {
 		for x, cell := range row {
-			if cell != nil { ds.AddStone(newStone(x,y, *cell)) }
+			if cell != nil {
+				ds.AddStone(newStone(x, y, *cell))
+			}
 		}
 	}
 }

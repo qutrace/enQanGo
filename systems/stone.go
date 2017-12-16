@@ -1,9 +1,9 @@
 package systems
 
 import (
-  "engo.io/ecs"
-  "engo.io/engo"
-  "engo.io/engo/common"
+	"engo.io/ecs"
+	"engo.io/engo"
+	"engo.io/engo/common"
 )
 
 type Stone struct {
@@ -48,13 +48,13 @@ func newStone(x int, y int, player bool) Stone {
 }
 
 func (s *Stone) Update() {
-  x := engo.CanvasWidth()
-  y := engo.CanvasHeight()
-  w := x/6.
-  h := y/6.
-  s.SpaceComponent.Position.X = float32(200 + w * float32(s.BoardComponent.X) - x/2)
-  s.SpaceComponent.Position.Y = float32(200 + h * float32(s.BoardComponent.Y) - y/2)
-  s.SpaceComponent.Width = w
-  s.SpaceComponent.Height = h
-  s.RenderComponent.Scale = engo.Point{X: w/7 ,Y: h/7}
+	x := engo.CanvasWidth()
+	y := engo.CanvasHeight()
+	w := x / 6.
+	h := y / 6.
+	s.SpaceComponent.Position.X = float32(200 + w*float32(s.BoardComponent.X) - x/2)
+	s.SpaceComponent.Position.Y = float32(200 + h*float32(s.BoardComponent.Y) - y/2)
+	s.SpaceComponent.Width = w
+	s.SpaceComponent.Height = h
+	s.RenderComponent.Scale = engo.Point{X: w / 7, Y: h / 7}
 }
